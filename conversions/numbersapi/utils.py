@@ -1,4 +1,4 @@
-number_list = {
+numbers_list = {
     0: "zero",
     1: "one",
     2: "two",
@@ -11,7 +11,7 @@ number_list = {
     9: "nine",
 }
 
-teen_list = {
+teens_list = {
     10: "ten",
     11: "eleven",
     12: "twelve",
@@ -56,7 +56,16 @@ def convert_number_to_words(number):
     """
     if number < 0:
         return "{ }".join("negative", convert_number_to_words(-number))
-    elif number == 0:
-        return number_list[number]
+    elif number >= 0 and number < 10:
+        return numbers_list[number]
+    elif number >= 10 and number < 20:
+        return teens_list[number]
+    elif number >= 20 and number < 100:
+        div = (number // 10) * 10
+        mod = number % 10
+        if mod != 0:
+            return tens_list[div] + "-" + convert_number_to_words(mod)
+        else:
+            return tens_list[number]
     else:
         return "number"
