@@ -1,4 +1,6 @@
-numbers_list = {
+from math import floor, log
+
+ones_dict = {
     0: "zero",
     1: "one",
     2: "two",
@@ -11,7 +13,7 @@ numbers_list = {
     9: "nine",
 }
 
-teens_list = {
+teens_dict = {
     10: "ten",
     11: "eleven",
     12: "twelve",
@@ -24,48 +26,76 @@ teens_list = {
     19: "nineteen",
 }
 
-tens_list = {
-    20: "twenty",
-    30: "thirty",
-    40: "forty",
-    50: "fifty",
-    60: "sixty",
-    70: "seventy",
-    80: "eighty",
-    90: "ninety",
+tens_dict = {
+    2: "twenty",
+    3: "thirty",
+    4: "forty",
+    5: "fifty",
+    6: "sixty",
+    7: "seventy",
+    8: "eighty",
+    9: "ninety",
 }
 
-illions_list = {
+exponentials_dict = {
+    0: "hundred",
     1: "thousand",
     2: "million",
     3: "billion",
     4: "trillion",
     5: "quadrillion",
     6: "quintillion",
-    7: "sextillion",
-    8: "septillion",
-    9: "octillion",
-    10: "nonillion",
-    11: "decillion",
 }
 
 
-def convert_number_to_words(number):
+def convert_number_to_words(num):
     """
-    Convert given number to English words.
+    Converts a given integer number to English words.
+
+    Args:
+        num (int): The integer to be converted. Must be equal to or less than 9223372036854775807.
+
+    Returns:
+        convert_number_to_words: The number as English words.
     """
-    if number < 0:
-        return "{ }".join("negative", convert_number_to_words(-number))
-    elif number >= 0 and number < 10:
-        return numbers_list[number]
-    elif number >= 10 and number < 20:
-        return teens_list[number]
-    elif number >= 20 and number < 100:
-        div = (number // 10) * 10
-        mod = number % 10
-        if mod != 0:
-            return tens_list[div] + "-" + convert_number_to_words(mod)
+    if isinstance(num, int):
+        if num < 0:
+            return " ".join(["negative", convert_number_to_words(-num)])
+        elif num < 10:
+            return ones_dict[num]
+        elif num < 20:
+            return teens_dict[num]
+        elif num < 100:
+            div, mod = divmod(num, 10)
+            if mod:
+                return f"{tens_dict[div]}-{convert_number_to_words(mod)}"
+            else:
+                return tens_dict[div]
+        elif num < 1000:
+            return exponential_helper(num, 100)
+        elif num < 1000**2:
+            return exponential_helper(num, 1000)
+        elif num < 1000**3:
+            return exponential_helper(num, 1000**2)
+        elif num < 1000**4:
+            return exponential_helper(num, 1000**3)
+        elif num < 1000**5:
+            return exponential_helper(num, 1000**4)
+        elif num < 1000**6:
+            return exponential_helper(num, 1000**5)
+        elif num < 9223372036854775808:  # Django's BigIntegerField fits 64-bits numbers
+            return exponential_helper(num, 1000**6)
         else:
-            return tens_list[number]
+            raise NotImplementedError("Integer provided is greater than 9223372036854775807.")
     else:
-        return "number"
+        raise TypeError("An integer type number was not provided.")
+
+
+def exponential_helper(num, magnitude):
+    div, mod = divmod(num, magnitude)
+    div_words = convert_number_to_words(div)
+    exp = floor(log(num) / log(1000))
+    if mod:
+        return f"{div_words} {exponentials_dict[exp]} {convert_number_to_words(mod)}"
+    else:
+        return f"{div_words} {exponentials_dict[exp]}"
