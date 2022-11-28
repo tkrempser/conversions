@@ -56,7 +56,7 @@ def convert_number_to_words(num):
         num (int): The integer to be converted. Must be equal to or less than 9223372036854775807.
 
     Returns:
-        convert_number_to_words: The number as English words.
+        A string describing the number as English words.
     """
     if isinstance(num, int):
         if num < 0:
