@@ -1,6 +1,6 @@
 # conversions
 
-API to convert numbers to English words.
+API to convert integer numbers to English words
 
 ## Class diagrams
 
