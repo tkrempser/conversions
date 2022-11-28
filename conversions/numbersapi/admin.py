@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from numbersapi.models import Conversion
+
+
+admin.site.register(Conversion)
