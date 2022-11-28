@@ -14,3 +14,4 @@ class ConversionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Conversion
         fields = ["url", "input_number", "output_words", "created_by", "created_at"]
+        read_only_fields = ['output_words',]
