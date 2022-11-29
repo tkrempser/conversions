@@ -140,7 +140,7 @@ if not DEBUG:
 
 if not DEBUG:
     CORS_ALLOWED_ORIGINS = [
-        "https://tkrempser.github.io/",
+        "https://tkrempser.github.io",
     ]
 else:
     CORS_ALLOWED_ORIGINS = [
