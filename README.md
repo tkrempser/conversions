@@ -2,6 +2,10 @@
 
 API to convert integer numbers to English words
 
+## Live demo
+
+Browsable REST API endpoint: https://conversions.krempser.com.br/. Also available in raw json: https://conversions.krempser.com.br/.json.
+
 ## Class diagrams
 
 Basic representation of this project's models:
