@@ -84,4 +84,4 @@ pytest
 
 ## Frontend app:
 
-This API project also has a React application working as a frontend: https://tkrempser.github.io/conversions-app/. The source code of this app available here: https://github.com/tkrempser/conversions-api/.
+This API project also has a React application working as a frontend: https://tkrempser.github.io/conversions-app/. The source code of this frontend application is available here: https://github.com/tkrempser/conversions-api/.
