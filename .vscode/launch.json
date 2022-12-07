@@ -9,7 +9,7 @@
         "program": "${workspaceFolder}/conversions/manage.py",
         "args": [
           "runserver",
-          "8001"
+          "8002"
         ],
         "django": true
       }
