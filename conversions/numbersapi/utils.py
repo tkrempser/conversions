@@ -53,7 +53,7 @@ def convert_number_to_words(num):
     Converts a given integer number to English words.
 
     Args:
-        num (int): The integer to be converted. Must be equal to or less than 9223372036854775807.
+        num (int): The integer to be converted. Must be equal to or less than 9223372036854775807 and equal to or greater than -9223372036854775807.
 
     Returns:
         A string describing the number as English words.
