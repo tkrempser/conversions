@@ -86,7 +86,7 @@ def convert_number_to_words(num):
         elif num < 9223372036854775808:  # Django's BigIntegerField fits 64-bits numbers
             return exponential_helper(num, 1000**6)
         else:
-            raise NotImplementedError("Integer provided is greater than 9223372036854775807.")
+            raise NotImplementedError("The absolute value of the given integer is greater than 9223372036854775807.")
     else:
         raise TypeError("An integer type number was not provided.")
 
