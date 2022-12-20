@@ -8,5 +8,8 @@ class Conversion(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ["created_by"]
+
     def __str__(self):
         return f"{self.input_number} - {self.output_words}"
