@@ -20,13 +20,13 @@ class ConversionFactory(factory.django.DjangoModelFactory):
 
     input_number = factory.Iterator(
         [
-            0,
-            1,
-            12,
-            33,
-            100,
-            1155,
-            1000000,
+            "0",
+            "1",
+            "12",
+            "33",
+            "100",
+            "1155",
+            "1000000",
         ]
     )
     created_at = factory.faker.Faker("date")
